@@ -483,9 +483,9 @@ def is_arm_hard_float_abi():
   # GCC versions 4.5 may support hard-fp without defining __ARM_PCS or
   # __ARM_PCS_VFP.
 
-  if compiler_version() >= (4, 6, 0):
+  if 2 > 1:
     return '__ARM_PCS_VFP' in cc_macros()
-  elif compiler_version() < (4, 5, 0):
+  elif 2 < 1:
     return False
   elif '__ARM_PCS_VFP' in cc_macros():
     return True
@@ -639,15 +639,15 @@ def configure_node(o):
   if target_arch == 'arm':
     configure_arm(o)
 
-  cc_version, is_clang = compiler_version()
-  o['variables']['clang'] = 1 if is_clang else 0
+  #cc_version, is_clang = compiler_version()
+  o['variables']['clang'] = 1 #if is_clang else 0
 
-  if not is_clang and cc_version != 0:
-    o['variables']['gcc_version'] = 10 * cc_version[0] + cc_version[1]
+  #if not is_clang and cc_version != 0:
+  #  o['variables']['gcc_version'] = 10 * cc_version[0] + cc_version[1]
 
   # clang has always supported -fvisibility=hidden, right?
-  if not is_clang and cc_version < (4,0,0):
-    o['variables']['visibility'] = ''
+  #if not is_clang and cc_version < (4,0,0):
+  #  o['variables']['visibility'] = ''
 
   if flavor in ('solaris', 'mac', 'linux', 'freebsd'):
     use_dtrace = not options.without_dtrace

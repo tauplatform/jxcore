@@ -41,7 +41,8 @@ fi
 
 export ANDROID_NDK=$1
 
-MIPS=out_android/mipsel
+#MIPS=out_android/mipsel
+MIPS=0
 ARM7=out_android/arm
 INTEL64=out_android/x64
 INTEL32=out_android/ia32
