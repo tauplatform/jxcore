@@ -1,4 +1,4 @@
-CFLAGS  := -std=c99 -Wall -O2 -pthread
+CFLAGS  := -std=c99 -Wall -O2 -pthread -stdlib=libc++
 LDFLAGS := -pthread
 LIBS    := -lm
 ifeq ($(shell uname),SunOS)

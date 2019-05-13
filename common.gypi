@@ -58,7 +58,7 @@
         'variables': {
           'v8_enable_handle_zapping%': 1,
         },
-        'cflags': [ '-g', '-O0' ],
+        'cflags': [ '-g', '-O0', '-std=c99', '-stdlib=libc++' ],
         'conditions': [
           ['target_arch=="x64"', {
             'msvs_configuration_platform': 'x64',
@@ -84,7 +84,7 @@
         },
       },
       'Release': {
-        'cflags': [ '-O2', '-ffunction-sections', '-fdata-sections', '-fno-strict-aliasing' ],
+        'cflags': [ '-O2', '-ffunction-sections', '-fdata-sections', '-fno-strict-aliasing', '-std=c99', '-stdlib=libc++'  ],
         'cflags!': [ '-O3', '-fstrict-aliasing' ],
         'variables': {
           'v8_enable_handle_zapping%': 0,
@@ -266,7 +266,7 @@
           'MACOSX_DEPLOYMENT_TARGET': '10.5',       # -mmacosx-version-min=10.5
           'USE_HEADERMAP': 'NO',
           'OTHER_CFLAGS': [
-            '-fno-strict-aliasing',
+            '-fno-strict-aliasing', '-std=c99', '-stdlib=libc++'
           ],
           'WARNING_CFLAGS': [
             '-Wall',
@@ -302,7 +302,9 @@
           'GCC_THREADSAFE_STATICS': 'NO',           # -fno-threadsafe-statics
           'PREBINDING': 'NO',                       # No -Wl,-prebind
           'EMBED_BITCODE': 'YES',
-          'IPHONEOS_DEPLOYMENT_TARGET': '6.0',
+          'IPHONEOS_DEPLOYMENT_TARGET': '8.0',
+          'CLANG_CXX_LIBRARY': 'libc++',
+          'GCC_C_LANGUAGE_STANDARD': 'c99',
           'GCC_GENERATE_DEBUGGING_SYMBOLS': 'YES',
           
           'USE_HEADERMAP': 'NO',

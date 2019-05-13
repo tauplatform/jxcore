@@ -386,10 +386,10 @@
             'JS_HAVE_MACHINE_ENDIAN_H=1',
           ],
           'xcode_settings': {
-            'OTHER_CPLUSPLUSFLAGS' : ['-std=c++11', '-stdlib=libstdc++', 
+            'OTHER_CPLUSPLUSFLAGS' : ['-std=c++11', '-stdlib=libc++',
               '-Wno-mismatched-tags', '-Wno-missing-field-initializers',
               '-Wno-unused-private-field', '-Wno-invalid-offsetof', '-Wno-ignored-qualifiers'],
-            'OTHER_CFLAGS' : ['-std=gnu99'],
+            'OTHER_CFLAGS' : [],
           }
         }],
       ['OS=="ios"', {
@@ -404,7 +404,8 @@
           'GCC_THREADSAFE_STATICS': 'NO',           # -fno-threadsafe-statics
           'PREBINDING': 'NO',                       # No -Wl,-prebind
           'EMBED_BITCODE': 'YES',
-          'IPHONEOS_DEPLOYMENT_TARGET': '6.0',
+          'IPHONEOS_DEPLOYMENT_TARGET': '8.0',
+          'CLANG_CXX_LIBRARY': 'libc++',
           'GCC_GENERATE_DEBUGGING_SYMBOLS': 'NO',
           
           'USE_HEADERMAP': 'NO',

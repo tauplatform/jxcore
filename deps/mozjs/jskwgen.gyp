@@ -14,8 +14,10 @@
               '-Wno-mismatched-tags', '-Wno-missing-field-initializers',
               '-Wno-unused-private-field', '-Wno-invalid-offsetof', '-Wno-ignored-qualifiers',
             ],
-            'OTHER_CFLAGS' : ['-std=gnu99'],
-            'MACOSX_DEPLOYMENT_TARGET': '10.7',       # -mmacosx-version-min=10.7 
+            'OTHER_CFLAGS' : [],
+          'IPHONEOS_DEPLOYMENT_TARGET': '8.0',
+          'CLANG_CXX_LIBRARY': 'libc++',
+                'MACOSX_DEPLOYMENT_TARGET': '10.7',       # -mmacosx-version-min=10.7
           }
         }],
       ]}

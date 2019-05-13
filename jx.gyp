@@ -364,11 +364,11 @@
               'DARWIN=1',
             ],
             'xcode_settings': {
-              'OTHER_CPLUSPLUSFLAGS': ['-std=c++11', '-stdlib=libstdc++',
+              'OTHER_CPLUSPLUSFLAGS': ['-std=c++11', '-stdlib=libc++',
                 '-Wno-mismatched-tags', '-Wno-missing-field-initializers',
                 '-Wno-unused-private-field', '-Wno-invalid-offsetof', '-Wno-ignored-qualifiers'
               ],
-              'OTHER_CFLAGS': ['-std=gnu99'],
+              'OTHER_CFLAGS': [],
             },
             'conditions': [
               ['OS=="mac"', {
@@ -379,8 +379,9 @@
               }],
               ['OS=="ios"', {
                 'xcode_settings': {
-                  'IPHONEOS_DEPLOYMENT_TARGET': '6.0',
-                },
+                  'IPHONEOS_DEPLOYMENT_TARGET': '8.0',
+                  'CLANG_CXX_LIBRARY': 'libc++'
+                          },
                 'defines': ['__IOS__']
               }],
               ['OS=="ios" and target_arch!="x64" and target_arch!="ia32"', {
