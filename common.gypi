@@ -58,7 +58,7 @@
         'variables': {
           'v8_enable_handle_zapping%': 1,
         },
-        'cflags': [ '-g', '-O0', '-std=c99', '-stdlib=libc++' ],
+        'cflags': [ '-g', '-O0'],
         'conditions': [
           ['target_arch=="x64"', {
             'msvs_configuration_platform': 'x64',
@@ -84,7 +84,7 @@
         },
       },
       'Release': {
-        'cflags': [ '-O2', '-ffunction-sections', '-fdata-sections', '-fno-strict-aliasing', '-std=c99', '-stdlib=libc++'  ],
+        'cflags': [ '-O2', '-ffunction-sections', '-fdata-sections', '-fno-strict-aliasing' ],
         'cflags!': [ '-O3', '-fstrict-aliasing' ],
         'variables': {
           'v8_enable_handle_zapping%': 0,

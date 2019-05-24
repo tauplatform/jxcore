@@ -47,7 +47,8 @@ ARM7=out_android/arm
 INTEL64=out_android/x64
 INTEL32=out_android/ia32
 FATBIN=out_android/android
-    
+ARM64=out_android/arm64
+
 MAKE_INSTALL() {
   TARGET_DIR="out_$1_droid"
   PREFIX_DIR="out_android/$1"
@@ -58,7 +59,7 @@ MAKE_INSTALL() {
   make V= -j $(getconf _NPROCESSORS_ONLN) install
   ERROR_ABORT_MOVE "mv out $TARGET_DIR" $1
   mv out $TARGET_DIR
-  
+
   mv $PREFIX_DIR/bin/libcares.a "$PREFIX_DIR/bin/libcares_$1.a"
   mv $PREFIX_DIR/bin/libchrome_zlib.a "$PREFIX_DIR/bin/libchrome_zlib_$1.a"
   mv $PREFIX_DIR/bin/libhttp_parser.a "$PREFIX_DIR/bin/libhttp_parser_$1.a"
@@ -72,16 +73,18 @@ MAKE_INSTALL() {
 
 
 COMBINE() {
-  cp "$MIPS/bin/$1_mipsel.a" "$FATBIN/bin/"
+  #cp "$MIPS/bin/$1_mipsel.a" "$FATBIN/bin/"
   cp "$ARM7/bin/$1_arm.a" "$FATBIN/bin/"
   cp "$INTEL64/bin/$1_x64.a" "$FATBIN/bin/"
   cp "$INTEL32/bin/$1_ia32.a" "$FATBIN/bin/"
+  #cp "$ARM64/bin/$1_arm64.a" "$FATBIN/bin/"
   ERROR_ABORT
 }
 
 
-mkdir out_mipsel_droid
+#mkdir out_mipsel_droid
 mkdir out_arm_droid
+mkdir out_arm64_droid
 mkdir out_x64_droid
 mkdir out_ia32_droid
 mkdir out_android
@@ -89,15 +92,16 @@ mkdir out_android
 rm -rf out
 
 OLD_PATH=$PATH
-export TOOLCHAIN=$PWD/android-toolchain-mipsel
-export PATH=$TOOLCHAIN/bin:$OLD_PATH
-export AR=mipsel-linux-android-ar
-export CC=mipsel-linux-android-gcc
-export CXX=mipsel-linux-android-g++
-export LINK=mipsel-linux-android-g++
 
-LOG $GREEN_COLOR "Compiling Android MIPS\n"
-MAKE_INSTALL mipsel
+#export TOOLCHAIN=$PWD/android-toolchain-mipsel
+#export PATH=$TOOLCHAIN/bin:$OLD_PATH
+#export AR=mipsel-linux-android-ar
+#export CC=mipsel-linux-android-gcc
+#export CXX=mipsel-linux-android-g++
+#export LINK=mipsel-linux-android-g++
+
+#LOG $GREEN_COLOR "Compiling Android MIPS\n"
+#MAKE_INSTALL mipsel
 
 export TOOLCHAIN=$PWD/android-toolchain-arm
 export PATH=$TOOLCHAIN/bin:$OLD_PATH
@@ -108,6 +112,17 @@ export LINK=arm-linux-androideabi-g++
 
 LOG $GREEN_COLOR "Compiling Android ARM7\n"
 MAKE_INSTALL arm
+
+export TOOLCHAIN=$PWD/android-toolchain-arm64
+export PATH=$TOOLCHAIN/bin:$OLD_PATH
+export AR=aarch64-linux-android-ar
+export CC=aarch64-linux-android-gcc
+export CXX=aarch64-linux-android-g++
+export LINK=aarch64-linux-android-g++
+
+#LOG $GREEN_COLOR "Compiling Android ARM64\n"
+#MAKE_INSTALL arm64
+
 
 export TOOLCHAIN=$PWD/android-toolchain-intelx64
 export PATH=$TOOLCHAIN/bin:$OLD_PATH
@@ -148,8 +163,9 @@ COMBINE "libsqlite3"
 
 cp src/public/*.h $FATBIN/bin
 
-rm -rf $MIPS
+#rm -rf $MIPS
 rm -rf $ARM7
+#rm -rf $ARM64
 rm -rf $INTEL32
 rm -rf $INTEL64
 

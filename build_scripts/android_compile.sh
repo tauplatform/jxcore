@@ -43,7 +43,7 @@ export ANDROID_NDK=$1
 
 CONF_EXTRAS=
 MIPS=0 #out_mipsel_droid
-ARM64=0 #out_arm64_droid
+ARM64=out_arm64_droid
 
 if [ $# -eq 2 ]
 then
