@@ -1,0 +1,13 @@
+iOS
+---
+
+XCode 10
+./build_scripts/ios_compile.sh
+
+
+Android
+-------
+
+NDK 15c
+./build_scripts/android-configure.sh /Users/MOHUS/android-ndk-r15c
+./build_scripts/android_compile_v8.sh /Users/MOHUS/android-ndk-r15c
