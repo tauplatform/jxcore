@@ -505,6 +505,7 @@ void NodeHttpParser::InitParserMembers(
   com->parser_settings->on_headers_complete = Parser::on_headers_complete;
   com->parser_settings->on_body = Parser::on_body;
   com->parser_settings->on_message_complete = Parser::on_message_complete;
+  com->parser_settings->on_status = NULL;
 }
 
 JS_HANDLE_VALUE ExecuteDirect(node::commons* com,
